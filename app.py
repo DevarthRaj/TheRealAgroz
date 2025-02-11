@@ -1,10 +1,9 @@
-from flask import Flask, render_template, url_for, redirect, flash
+from flask import Flask, render_template, url_for, redirect, flash, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField,DateField
-from wtforms.validators import Optional
-from wtforms.validators import InputRequired, Length, ValidationError
+from wtforms import StringField, SubmitField, PasswordField, DateField
+from wtforms.validators import Optional, InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
@@ -49,6 +48,18 @@ class Profile(db.Model):
     user = db.relationship('User', backref=db.backref('profile', uselist=False))
 
 
+# WindSpeedData model to store wind speed data
+class WindSpeedData(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    latitude = db.Column(db.Float, nullable=False)
+    longitude = db.Column(db.Float, nullable=False)
+    wind_speed = db.Column(db.Float, nullable=False)
+    date = db.Column(db.String(10), nullable=False)  # Format: YYYYMMDD
+
+    def __repr__(self):
+        return f'<WindSpeedData {self.latitude}, {self.longitude}, {self.wind_speed}>'
+
+
 # Registration form (WTForms)
 class RegistrationForm(FlaskForm):
     username = StringField(validators=[InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
@@ -68,77 +79,32 @@ class LoginForm(FlaskForm):
     submit = SubmitField("Login")
 
 
-# The UpdateProfileForm class defines a form for updating the user's profile.
-class UpdateProfileForm(FlaskForm):
-    username = StringField('Username', validators=[InputRequired(), Length(min=4, max=20)])
-    adhar = StringField('Adhar', validators=[Optional()])
-    
-    # 'dob' field is used to input the date of birth. The format of the date is YYYY-MM-DD.
-    dob = DateField('Date of Birth', format='%Y-%m-%d', validators=[Optional()])
-    
-    # 'address' field allows the user to input their address, which is an optional field.
-    address = StringField('Address', validators=[Optional()])
-    
-    # 'submit' field is the submit button to submit the form.
-    submit = SubmitField('Update Profile')
-
-
 # Routes
-@app.route('/app2', methods=['GET', 'POST'])
-@login_required
-def app2():
-    return render_template('app2.html')
+@app.route('/save_wind_speed', methods=['POST'])
+def save_wind_speed():
+    data = request.get_json()  # Get the JSON data sent from the frontend
+    latitude = data['latitude']
+    longitude = data['longitude']
+    wind_speed = data['wind_speed']
+    date = data['date']
 
+    # Create a new WindSpeedData record
+    new_data = WindSpeedData(
+        latitude=latitude,
+        longitude=longitude,
+        wind_speed=wind_speed,
+        date=date
+    )
 
-@app.route('/logout', methods=['GET', 'POST'])
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('login'))
+    try:
+        # Add and commit the new record to the database
+        db.session.add(new_data)
+        db.session.commit()
+        return jsonify({'message': 'Data saved successfully!'}), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'message': 'Error saving data', 'error': str(e)}), 500
 
-
-
-@app.route('/updateprofile', methods=['GET', 'POST'])
-@login_required
-def update_profile():
-    form = UpdateProfileForm()  # Create the form instance
-    
-    # Check if the form is submitted and validated
-    if form.validate_on_submit():
-        # Handle form data and update the user's profile here
-        # For example, updating the profile information in the database
-        current_user.profile.username = form.username.data
-        current_user.profile.Adhar = form.adhar.data
-        current_user.profile.DOB = form.dob.data
-        current_user.profile.address = form.address.data
-        
-        db.session.commit()  # Save the changes to the database
-        flash('Profile updated successfully!', 'success')
-        return redirect(url_for('profile'))  # Redirect to the profile page
-
-    return render_template('updateprofile.html', form=form)  # Pass the form to the template
-
-
-
-@app.route('/profile', methods=['GET', 'POST'])
-@login_required
-def profile():
-    user = current_user  # Get the currently logged-in user
-    profile = Profile.query.filter_by(username=user.username).first()  # Get the profile associated with the user
-    
-    form = UpdateProfileForm(obj=profile)  # Pre-populate form with the current profile data
-    
-    if form.validate_on_submit():
-        profile.username = form.username.data
-        profile.Adhar = form.adhar.data
-        profile.DOB = form.dob.data
-        profile.address = form.address.data
-        
-        db.session.commit()  # Save the changes to the database
-        flash('Profile updated successfully!', 'success')
-        return redirect(url_for('profile'))  # Redirect to the profile page
-
-    return render_template('profile.html', form=form, profile=profile)  # Pass both form and profile
 
 @app.route('/')
 def home():
@@ -150,27 +116,11 @@ def about():
     return render_template('about.html')
 
 
-@app.route('/ricecrop', methods=['GET', 'POST'])
-def crop():
-    return render_template('indexc.html')
-
-
 @app.route('/windspeed', methods=['GET', 'POST'])
 def windspeed():
     return render_template('indexw.html')
 
 
-@app.route('/resources', methods=['GET', 'POST'])
-def resource():
-    return render_template('resource.html')
-
-
-@app.route('/contact', methods=['GET', 'POST'])
-def contact():
-    return render_template('contact.html')
-
-
-# Login route
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -185,27 +135,6 @@ def login():
     return render_template('login.html', form=form)
 
 
-# Sign Up route
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        new_user = User(username=form.username.data, password=hashed_password)
-        db.session.add(new_user)
-        db.session.commit()
-
-        # Create the profile after the user is created
-        new_profile = Profile(username=form.username.data, user_id=new_user.id)
-        db.session.add(new_profile)
-        db.session.commit()
-
-        flash("Account created successfully! Please log in.", "success")
-        return redirect(url_for('login'))
-    return render_template('signup.html', form=form)
-
-
 # Run the app
 if __name__ == '__main__':
     app.run(debug=True)
-
