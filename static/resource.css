@@ -1,0 +1,195 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+     /* Light background for content contrast */
+}
+
+/* Navigation Bar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 15px;
+    margin: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: fixed;
+    width: 94%;
+    height: 66px;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar img {
+    width: 90px;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    position: relative;
+    text-decoration: none;
+    color: #333;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.navbar ul li a:hover {
+    color: #ffb100;
+}
+
+.navbar ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 3px;
+    background-color: #ffb100;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    color: #ffb100;
+}
+
+.navbar ul li a.active::after, .navbar ul li a:hover::after {
+    transform: scaleX(1);
+}
+
+.navbar ul li a.active {
+    color: #ffb100;
+}
+
+.login-btn {
+    background-color: #ffb100;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-btn:hover {
+    background-color: #e69900;
+}
+
+/* Content Sections */
+.section {
+    padding: 50px;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://cdn.agdaily.com/wp-content/uploads/2018/09/bg-corn_field-001-naramit.jpg');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(10px);
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    border-bottom: 2px solid #ffb100;
+    margin-bottom: 30px;
+    margin-top: 100px;
+    position: relative;
+    color: #e8e5e5;
+    z-index: 1;
+}
+.section.blogs p {
+    margin: 20px 0;
+    height: auto;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 1.1rem;
+    color: #000000;
+    line-height: 1.5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.section.blogs p:hover {
+    transform: translateY(-5px); /* Subtle hover effect */
+}
+
+.section.resources {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.resource-item {
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    font-size: 1.1rem;
+    margin: 7px;
+    color: #000000;
+    line-height: 1.5;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+#google_translate_element{
+position: fixed;
+bottom: 1px;
+right:1px;
+z-index: 2000;
+}
+.goog-te-combo,.dropdown{
+border: none;
+border-radius: 5%;
+padding: 5px 5px 5px 5px;
+background-color: orange;
+color: black;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+background: rgba( 255, 255, 255, 0.15 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+z-index: 2000;
+
+}
+
+.resource-item:hover {
+    transform: scale(1.05); /* Subtle zoom effect on hover */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .section.resources {
+        grid-template-columns: 1fr;
+    }
+}

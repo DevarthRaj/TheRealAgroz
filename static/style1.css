@@ -1,0 +1,214 @@
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+    margin: 0%;
+    padding: 0;
+    background-color: #f4f4f4;
+    background-image: url('https://cdn.agdaily.com/wp-content/uploads/2018/09/bg-corn_field-001-naramit.jpg');
+}
+.center{
+    position: relative;
+    top:-45px;
+}
+h2{
+    font-family: Arial, sans-serif;
+    color: black;  
+}
+.skiptranslate.goog-te-gadget{
+    display: flex;
+    position: absolute;
+    right: 0%;
+    align-items: center;
+}
+/* Style for the container div */
+.logout-container {
+    background-color: #f9f9f9; /* Light gray background */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Inner spacing */
+    max-width: 400px; /* Set a max width */
+    margin: 20px auto; /* Center the container with auto margin */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+/* Style for the paragraph inside the logout-container */
+.logout-message {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333; /* Dark text color */
+    margin: 0; /* Remove default margin */
+}
+
+/* Style for the link inside the logout-message */
+.logout-message a {
+    text-decoration: none; /* Remove underline */
+    color: #007bff; /* Blue color for the link */
+    font-weight: bold; /* Make the link bold */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Hover effect for the link inside the logout-message */
+.logout-message a:hover {
+    color: #0056b3; /* Darker blue on hover */
+    text-decoration: underline; /* Add underline on hover */
+}
+.title-bar{
+    position: relative;
+}
+
+
+
+.head{
+    display: flex;
+    position: absolute;
+    align-items: center;
+    bottom: 50%;
+}
+.dropdown{
+    margin: 8px 8px 8px 8px;
+}
+.pro{
+    display: flex;
+    position: absolute;
+    left: 0%;
+    top: -10%;
+}
+.goog-te-combo,.dropdown{
+    border: none;
+    border-radius: 5%;
+    padding: 5px 5px 5px 5px;
+    background-color: orange;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+#city{
+    border: none;
+    border-radius: 5%;
+    padding: 10px 10px 10px 10px;
+    background-color: orange;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );    
+}
+.header {
+    display: flex;
+    flex-direction:row ;
+    justify-content: space-between;
+    position: relative;
+    left:100px;
+    margin:20px;
+    width: 85%;
+    height: 55%;
+    text-align: center;
+    height: 55px;
+    background: rgba( 255, 255, 255, 0.3 );
+    background: rgba( 255, 255, 255, 0.6 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.logo{
+    height: 100%;
+    width :100;
+    
+}
+.profile-pic{
+    width: 3%;
+    position: relative;
+    left:10px;
+    top:28px;
+    z-index: 100;
+}
+.profile-pic:hover{
+    cursor: pointer;
+}
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+
+.news,.crop_market {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: white;
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    transition: box-shadow 0.15s;
+}
+.crop_market:hover,.news:hover,#weather-container:hover{
+    box-shadow: 0 0 10px rgba(82, 255, 1, 0.911);
+}
+.search{
+            background-color: #ffb100;
+            color: white;
+            padding: 10px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+}
+.crop{
+    background-color: #ffb100;
+    color: white;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.crop:hover,.search:hover{
+    background-color: white;
+    border: none;
+    border-radius: 8%;
+    color: orange;
+
+}
+#weather-container {
+    padding: 20px;
+    background-color: white;
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+input, button {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#weather-icon {
+    width: 50px;
+    height: 50px;
+}
