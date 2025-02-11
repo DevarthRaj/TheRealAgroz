@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroZ - Blogs & Resources</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='resource.css')}}">
+</head>
+<body>
+    <div id="google_translate_element">
+
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="index.html"><img src="https://i.ibb.co/Hqcqj3Y/Tractor2.png" alt="Tractor2"></a>
+        <ul>
+            <li><a href="{{url_for('home')}}" class="active">Home</a></li>
+            <li><a href="{{url_for('about')}}">About Us</a></li>
+            <li><a href="{{url_for('resource')}}">Resources</a></li>
+            <li><a href="{{url_for('contact')}}">Contact</a></li>
+        </ul>
+        <a class="login-btn" id="loginBtn" href="{{url_for('login')}}">Login</a>
+    </div>
+
+    <!-- Blogs Section -->
+    <div class="section blogs">
+        <div class="section-title">BLOGS</div>
+        <p><b>AI for Crop and Resource Management:</b> AI models are enhancing farming efficiency by predicting soil and water conditions, helping farmers optimize resource use and reduce environmental impact.</p>
+        <p><b>Precision Robots for Farming:</b> Farm robots, like Carbon Robotics' LaserWeeder, use AI to target weeds without chemicals, improving crop care and sustainability.</p>
+        <p><b>Predictive Soil Management:</b> Research institutions are developing predictive models to understand soil properties and their effects on water availability, improving long-term crop planning.</p>
+        <p><b>Drone Technology for Carbon Sequestration:</b> Drones are being used to measure and verify carbon sequestration on farms, enabling easier participation in carbon credit markets.</p>
+        <p><b>Autonomous Farm Equipment:</b> AGCO's autonomous tractors, like Fendt Xaver robots, offer precise planting and improved farm productivity using AI and real-time data.</p>
+    
+
+    <!-- Resources Section -->
+    
+        <div class="section-title">RESOURCES & DATASETS</div>
+        <div class="resource-item">
+            <a href="https://www.earthdata.nasa.gov/learn/pathfinders/agricultural-and-water-resources-data-pathfinder"><b>NASA Agriculture and Water Management Pathfinder</b><br></a>
+            Remote tracking of drought, vegetation health, and soil moisture for crop management and irrigation optimization.
+        </div>
+        <div class="resource-item">
+            <a href="https://www.earthdata.nasa.gov/learn/pathfinders/disasters/floods-data-pathfinder"><b>NASA Floods Data Pathfinder</b><br></a>
+            Access datasets and tools to aid flood response and mitigation efforts, minimizing disaster costs.
+        </div>
+        <div class="resource-item">
+            <a href="https://www.earthdata.nasa.gov/learn/pathfinders/disasters/extreme-heat-data-pathfinder/find-data#temperature"><b>NASA Extreme Heat Data Pathfinder</b><br></a>
+            Monitoring and forecasting extreme heat events, crucial for maintaining farm health under changing climate conditions.
+        </div>
+        <div class="resource-item">
+            <a href="https://www.nasaacres.org/"><b>NASA Acres</b><br></a>
+            NASA’s U.S.-focused program applies satellite Earth observation to tackle agricultural challenges, aiding farmers and agrifood stakeholders.
+        </div>
+        <div class="resource-item">
+            <a href="https://nasaharvest.org/"><b>NASA Harvest</b><br></a>
+            A global consortium dedicated to solving agricultural issues using Earth observation, working with universities, industry, and governments.
+        </div>
+        <div class="resource-item">
+            <a href="https://ipad.fas.usda.gov/glam.aspx"><b>Global Agriculture Monitoring (GLAM)</b><br></a>
+            Near-real-time monitoring of global croplands using NASA MODIS satellite data, now with improved speed and flexibility.
+        </div>
+    </div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        } 
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

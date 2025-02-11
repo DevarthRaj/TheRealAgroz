@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='aboutstyle.css')}}">
+    <title>AgroZ - Agriculture & Eco Farming</title>
+
+</head>
+<body>
+    <div id="google_translate_element">
+
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <!-- <img src="https://i.ibb.co/H4qFXPc/Tractor.png" alt="Tractor" border="0">-->
+        <a href="index.html"><img src="https://i.ibb.co/Hqcqj3Y/Tractor2.png" alt="Tractor2" border="0"></a>
+        <ul>
+            <li><a href="{{url_for('home')}}" class="active">Home</a></li>
+            <li><a href="{{url_for('about')}}">About Us</a></li>
+            <li><a href="{{url_for('resource')}}">Resources</a></li>
+            <li><a href="{{url_for('contact')}}">Contact</a></li>
+        </ul>
+        <a class="login-btn" id="loginBtn" href="{{url_for('login')}}">Login</a>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>OVERVEIW.</h1>
+        <p> AgroZ is a forward-thinking agricultural company dedicated to advancing sustainable farming practices. 
+            Our mission is to integrate eco-friendly methods with the latest agricultural technologies, ensuring a 
+            prosperous and healthy future for both the environment and farmers. We believe in harnessing natural 
+            resources responsibly while improving yield and productivity in an ethical manner.</p>
+            <h2>About Website</h2>
+        <p>This website ia prototype designed to innovate scientifically enhanced farming.
+            It uses datasets and resources provided by NASA to aid farmers plant,harvest and irrigate
+            efficiently.The website is still in devolopmet.
+            We hope you enjoy the beta version.
+        </p>
+            <h6><i>Powerd by:</i>WALAYAR</h6>
+        <!--<a href="#" class="discover-btn">Discover More</a>-->
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Login to Your Account</h2>
+            <form>
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        } 
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
+       

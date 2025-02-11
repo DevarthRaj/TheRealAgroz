@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='signupstyle.css')}}">
+</head>
+<body>
+    <div class="signup-container">
+        <h1>Signup</h1>
+        <form method="POST" action="">
+            {{form.hidden_tag()}}
+            {{form.username}}
+            {{form.password}}
+            {{form.submit}}
+        </form>
+
+                    <p>Already have an account?<a href="{{url_for('login')}}">Log in</a> </p>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='loginstyle.css')}}">
+</head>
+<body>
+    <div class="profile-container">
+        <h1>Update Your Profile</h1>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            
+            <div class="form-group">
+                <label for="username">Username:</label>
+                {{ form.username }}
+            </div>
+
+            <div class="form-group">
+                <label for="adhar">Adhar:</label>
+                {{ form.adhar }}
+            </div>
+
+            <div class="form-group">
+                <label for="dob">DOB:</label>
+                {{ form.dob }}
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                {{ form.address }}
+            </div>
+
+            <button type="submit">Update Profile</button>
+        </form>
+    </div>
+</body>
+</html>

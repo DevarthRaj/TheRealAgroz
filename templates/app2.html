@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style1.css')}}">
+</head>
+<body>
+
+   <a href="{{url_for('profile')}}"> <img class="profile-pic" src="https://i.ibb.co/mTW60CF/user.png" ></a>
+    <div class="center">
+        <div style="display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            " class="header">
+                <div style="width: 50px;background-size: cover;" ><img src="https://i.ibb.co/Hqcqj3Y/Tractor2.png" alt="Tractor2" class="logo" ></div>
+                <div class="title"><h2>AgroZ Farm</h2></div>
+                <div id="google_translate_element" class="translate"></div>
+    </div>
+    <section class="news">
+        <h2>News</h2>   
+    </section>
+    <main id="weather-container">
+        <h2>Weather Predictor</h2>
+        <select id="city" aria-label="farming">
+            <option value>Select Location</option>
+            <option value="rr">Kothamangalam</option>
+        </select>
+        <button onclick="getWeather()" class="search">Search</button>
+        <div id="temp-div"></div>
+        <div id="weather-info"></div>
+        <div id="hourly-forecast"></div>
+    </main>
+    <section class="crop_market" >
+        <select class="dropdown" aria-label="farming">
+            <option value>Select crop</option>
+            <option value="rr">Rice</option>
+        </select>
+       <a href="{{url_for('crop')}}" ><button class="crop">Details</button></a>
+
+    </section>
+    <script src="{{ url_for('static', filename='script/script1.js') }}"></script>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'},
+                'google_translate_element'
+            );
+        } 
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <div class="logout-container">
+    <p class="logout-message">
+        If you want to logout, click <a href="{{url_for('login')}}">Logout</a>
+    </p>
+</div>
+</div>    
+    
+    
+    
+
+
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='loginstyle.css')}}">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login Page</h1>
+        <form method="POST" action="">
+            {{form.hidden_tag()}}
+            {{form.username}}
+            {{form.password}}
+            {{form.submit}}
+        </form>
+            <p>Don't have an account?<a href="{{url_for('signup')}}">Sign in</a> </p>
+
+    </div>
+</body>
+</html>
